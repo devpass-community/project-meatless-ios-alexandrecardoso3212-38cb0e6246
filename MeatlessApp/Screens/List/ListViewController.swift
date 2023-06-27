@@ -27,15 +27,14 @@ final class ListViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        service.fetchRestaurantList { restaurants in
-            
-            DispatchQueue.main.async {
-                
-                if let restaurants = restaurants {
-                    
-                    self.listView.updateView(restaurants: restaurants)
-                }
+        service.fetchRestaurantList { [weak self] result in
+            switch result {
+                case let .success(response):
+                    DispatchQueue.main.async {
+                        self?.listView.updateView(restaurants: response)
+                    }
+                case .failure:
+                    break
             }
         }
     }
