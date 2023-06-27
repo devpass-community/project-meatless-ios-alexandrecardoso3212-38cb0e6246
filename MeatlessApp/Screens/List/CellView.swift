@@ -18,7 +18,7 @@ class CellView: UITableViewCell {
         return stack
     }()
 
-    lazy var logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 25
@@ -27,7 +27,7 @@ class CellView: UITableViewCell {
         return imageView
     }()
 
-    lazy var restaurantNameLabel: UILabel = {
+    private lazy var restaurantNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 17)
@@ -35,7 +35,7 @@ class CellView: UITableViewCell {
         return label
     }()
 
-    lazy var restaurantInfoLabel: UILabel = {
+    private lazy var restaurantInfoLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .gray
@@ -59,9 +59,9 @@ class CellView: UITableViewCell {
 extension CellView {
  
     func updateView(restaurant: Restaurant) {
-        
-        // STORY 2: Configure CellView with the Restaurant data.
-         
+        logoImageView.image = UIImage(named: restaurant.image)
+        restaurantNameLabel.text = restaurant.name
+        restaurantInfoLabel.text = restaurant.distance
     }
 }
 
