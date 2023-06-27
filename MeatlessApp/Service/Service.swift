@@ -8,11 +8,7 @@ struct Service {
         self.service = service
     }
     
-    func fetchRestaurantList(completion: @escaping (Result<[Restaurant], Error>) -> Void) {
-        
-        // STORY 1: Implement the API integration to fetch restaurant list.
-        // GET https://raw.githubusercontent.com/devpass-tech/meatless-api/main/restaurant_list.json
-        
+    func fetchRestaurantList(completion: @escaping (Result<[Restaurant], Error>) -> Void) {        
         guard let url = URL(string: "https://raw.githubusercontent.com/devpass-tech/meatless-api/main/restaurant_list.json")
         else {
             return completion(.failure(NSError(domain: "url", code: 404)))
