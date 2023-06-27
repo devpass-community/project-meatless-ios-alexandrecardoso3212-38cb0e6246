@@ -95,7 +95,6 @@ private extension DetailView {
     }
 }
 
-// STORY 3: Configure UITableViewDataSource to show the restaurants' menu list.
 
 extension DetailView: UITableViewDataSource {
 
@@ -105,8 +104,11 @@ extension DetailView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MenuCellView
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MenuCellView
+        else { return UITableViewCell() }
+        
+        let item = restaurant.menu[indexPath.row]
+        cell.updateView(menuItem: item)
         
         return cell
     }
