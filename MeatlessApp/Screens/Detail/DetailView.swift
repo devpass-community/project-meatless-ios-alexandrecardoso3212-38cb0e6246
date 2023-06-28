@@ -100,7 +100,7 @@ extension DetailView: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 10
+        return restaurant.menu.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,10 +114,8 @@ extension DetailView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let headerView = HeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: DetailView.headerHeight))
-        
-        // STORY 4: Configure HeaderView with the Restaurant instance data.
+        headerView.updateView(restaurant: restaurant)
 
         return headerView
     }
